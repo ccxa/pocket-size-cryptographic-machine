@@ -1,27 +1,15 @@
-def print_purple1(text):
-    print("\033[36m{}\033[00m".format(text))
-
-
-def print_purple2(text):
-    print("\033[36m{}\033[00m".format(text)),
-
-
-def print_blue(text):
-    print("\033[34m{}\033[00m".format(text))
-
-
-def print_blue2(text):
-    print("\033[34m{}\033[00m".format(text)),
-
-
-def print_red(text):
-    print("\033[91m{}\033[00m" .format(text))
-
-
-def print_red2(text):
-    print("\033[91m{}\033[00m" .format(text)),
-
-
-def print_green(text):
-    print("\033[32m{}\033[00m" .format(text))
-
+def print_colorful(text, color):
+    if color == "green":
+        print("\033[32m{}\033[00m".format(text))
+    elif color == "red2":
+        print("\033[91m{}\033[00m".format(text)),
+    elif color == "red":
+        print("\033[91m{}\033[00m".format(text))
+    elif color == "blue2":
+        print("\033[34m{}\033[00m".format(text)),
+    elif color == "blue":
+        print("\033[34m{}\033[00m".format(text))
+    elif color == "purple2":
+        print("\033[36m{}\033[00m".format(text)),
+    elif color == "purple":
+        print("\033[36m{}\033[00m".format(text))

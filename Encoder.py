@@ -23,8 +23,8 @@ def enc(cargo,kind):
             fileState = True
         except IOError:
             os.system('clear')
-            print_red('Menu > Encrypt > Import File > Error!')
-            print_purple1('---------------------------------------------------------------------')
+            print_colorful('Menu > Encrypt > Import File > Error!', 'red')
+            print_colorful('---------------------------------------------------------------------', 'purple')
             note = input('File Not Found! hit Enter to go menu.')
 
         if fileState == True:
@@ -38,15 +38,14 @@ def enc(cargo,kind):
 
             if flag == True:
                 os.system('clear')
-                print_purple2('Menu > Encrypt > Import File >')
-                print_red('Attention!!')
-                print_purple1('---------------------------------------------------------------------')
-                print ("We have detected"),
-                print_blue2(counter)
+                print_colorful('Menu > Encrypt > Import File >', 'purple2')
+                print_colorful('Attention!!', 'red')
+                print_colorful('---------------------------------------------------------------------', 'purple')
+                print_colorful(counter, 'blue2')
                 print(','),
-                print_red2('\\n')
+                print_colorful('\\n', 'red2')
                 print('in your text. change it to'),
-                print_red('\\N')
+                print_colorful('\\N', 'red')
                 print('Otherwise it considered as Enter button and navigate words to next line.')
                 note = input('')
             else:
@@ -59,8 +58,8 @@ def enc(cargo,kind):
                     alphafile = alphafile + str(alphabet.index('\\')) + str(alphabet.index('n'))
                 #----------------------------------------------------------------------- [password > sha256]
                 os.system('clear')
-                print_purple1('Menu > Encrypt > Import File > Set encryption key')
-                print_purple1('---------------------------------------------------------------------')
+                print_colorful('Menu > Encrypt > Import File > Set encryption key', 'blue')
+                print_colorful('---------------------------------------------------------------------', 'purple')
                 sk = input("input an secret key in order to encrypt file\n>> ")
                 sha = hashlib.sha256()
                 sha.update(sk.encode('utf-8'))
@@ -72,8 +71,8 @@ def enc(cargo,kind):
                 #----------------------------------------------------------------------- [Create Encrypted File]
                 encryptedFile = int(alphasha) * int(alphafile)
                 os.system('clear')
-                print_purple1('Menu > Encrypt > Import File > Set encryption key > Set name')
-                print_purple1('---------------------------------------------------------------------')
+                print_colorful('Menu > Encrypt > Import File > Set encryption key > Set name', 'blue')
+                print_colorful('---------------------------------------------------------------------', 'purple')
                 name = input('Enter a name for encrypted file\n>> ')
                 if ".txt" not in name:
                     name = name + '.txt'
@@ -81,8 +80,8 @@ def enc(cargo,kind):
                 saveFile.write(str(encryptedFile))
                 saveFile.close()
                 os.system('clear')
-                print_green('Menu > Encrypt > Import File > Set encryption key > Set name > Done! ')
-                print_purple1('---------------------------------------------------------------------')
+                print_colorful('Menu > Encrypt > Import File > Set encryption key > Set name > Done! ', 'green')
+                print_colorful('---------------------------------------------------------------------', 'purple')
                 note = input('The encrypted file created. press Enter to go menu.')
 
 
@@ -94,8 +93,8 @@ def enc(cargo,kind):
                 alphatext = alphatext + str(alphabet.index(letter))
         #--------------------------------------------------------------------------- [password -> sha256]
         os.system('clear')
-        print_purple1('Menu > Encrypt > Import Text > Set encryption key')
-        print_purple1('---------------------------------------------------------------------')
+        print_colorful('Menu > Encrypt > Import Text > Set encryption key', 'blue')
+        print_colorful('---------------------------------------------------------------------', 'purple')
         sk = input('Set a secret key in order to encrypt text\n>> ')
         sha = hashlib.sha256()
         sha.update(sk.encode('utf-8'))
@@ -107,8 +106,8 @@ def enc(cargo,kind):
         #--------------------------------------------------------------------------- [generate encryptedText]
         encryptedText = int(alphasha) * int(alphatext)
         os.system('clear')
-        print_green('Menu > Encrypt > Import Text > Set encryption key > Done!')
-        print_purple1('---------------------------------------------------------------------')
+        print_colorful('Menu > Encrypt > Import Text > Set encryption key > Done!', 'green')
+        print_colorful('---------------------------------------------------------------------', 'purple')
         print('This is your encrypted text:')
         print(encryptedText)
         note = input('press Enter to go menu.')
@@ -134,15 +133,15 @@ def dec(cargo,kind):
             fileState = True
         except IOError:
             os.system('clear')
-            print_purple1('Menu > Decrypt > Import File > Error')
-            print_purple1('---------------------------------------------------------------------')
+            print_colorful('Menu > Decrypt > Import File > Error', 'red')
+            print_colorful('---------------------------------------------------------------------', 'purple')
             note = input('File Not Found! hit Enter to go menu.')
             fileState = False
         if fileState == True:
             #---------------------------------------------------------------------------[Enter Secret key]
             os.system('clear')
-            print_purple1('Menu > Decrypt > Import File > Enter encryption key')
-            print_purple1('---------------------------------------------------------------------')
+            print_colorful('Menu > Decrypt > Import File > Enter encryption key', 'blue')
+            print_colorful('---------------------------------------------------------------------', 'purple')
             sk = input("Enter files encryption key to decrypt it.\n>> ")
             sha = hashlib.sha256()
             sha.update(sk.encode('utf-8'))
@@ -165,16 +164,16 @@ def dec(cargo,kind):
                 if '' in decryptedFile:
                     decryptedFile.remove('')
                 os.system('clear')
-                print_green('Menu > Decrypt > Import File > Enter encryption key > Done!')
-                print_purple1('---------------------------------------------------------------------\n')
+                print_colorful('Menu > Decrypt > Import File > Enter encryption key > Done!', 'green')
+                print_colorful('---------------------------------------------------------------------\n', 'purple')
                 for part in decryptedFile:
                     print(part)
                 print('\n')
                 note = input('Its decrypted file text. hit Enter to go menu.')
             except:
                 os.system('clear')
-                print_red('Menu > Decrypt > Import File > Enter encryption key > Error!')
-                print_purple1('---------------------------------------------------------------------')
+                print_colorful('Menu > Decrypt > Import File > Enter encryption key > Error!', 'red')
+                print_colorful('---------------------------------------------------------------------', 'purple')
                 print('Decrypting fail >_<!')
                 print('''Tips:
                 1. Secret code is incorrect
@@ -191,8 +190,8 @@ def dec(cargo,kind):
             alphabet.insert(0,0)
             n+=1
         os.system('clear')
-        print_purple1('Menu > Decrypt > Import Text > Enter encryption key')
-        print_purple1('---------------------------------------------------------------------')
+        print_colorful('Menu > Decrypt > Import Text > Enter encryption key', 'blue')
+        print_colorful('---------------------------------------------------------------------', 'purple')
         sk = input('Import secret key in order to decrypt your text\n>> ')
         sha = hashlib.sha256()
         sha.update(sk.encode('utf-8'))
@@ -207,8 +206,8 @@ def dec(cargo,kind):
             decryptedText = ''
         except ValueError:
             os.system('clear')
-            print_red('Menu > Decrypt > Import Text > Enter encryption key > Error!')
-            print_purple1('---------------------------------------------------------------------')
+            print_colorful('Menu > Decrypt > Import Text > Enter encryption key > Error!', 'red')
+            print_colorful('---------------------------------------------------------------------', 'purple')
             print('Decrypting fail >_<!')
             print('''Tips:
             1. Secret code is incorrect
@@ -221,15 +220,15 @@ def dec(cargo,kind):
                 decryptedText = decryptedText + alphabet[int(letter)]
                 alphatext = alphatext[3:]
             os.system('clear')
-            print_green('Menu > Decrypt > Import Text > Enter encryption key > Done!')
-            print_purple1('---------------------------------------------------------------------')
+            print_colorful('Menu > Decrypt > Import Text > Enter encryption key > Done!', 'green')
+            print_colorful('---------------------------------------------------------------------', 'purple')
             print('This is your decrypted text, hit Enter to go menu.\n')
             print(decryptedText)
             note = input('')
         except:
             os.system('clear')
-            print_red('Menu > Decrypt > Import Text > Enter encryption key > Error!')
-            print_purple1('---------------------------------------------------------------------')
+            print_colorful('Menu > Decrypt > Import Text > Enter encryption key > Error!', 'red')
+            print_colorful('---------------------------------------------------------------------', 'purple')
             print('Decrypting fail >_<!')
             print('''Tips:
             1. Secret code is incorrect
@@ -239,22 +238,22 @@ def dec(cargo,kind):
 
 while True:
     os.system('clear')
-    print_purple1('Menu')
-    print_purple1('---------------------------------------------------------------------')
+    print_colorful('Menu', 'blue')
+    print_colorful('---------------------------------------------------------------------', 'purple')
     chose = input('[1]Encrypt  [2]Decrypt  [3]Help & About  [4]Exit\n>>  ')
 
     if chose in ['ENCRYPT','encrypt','Encrypt','1']:
         while True:
             os.system('clear')
-            print_purple1('Menu > Encrypt')
-            print_purple1('---------------------------------------------------------------------')
+            print_colorful('Menu > Encrypt', 'blue')
+            print_colorful('---------------------------------------------------------------------', 'purple')
             print('[1]Import File  [2]Input Text  [3]Cancel')
             chose = input('>> ')
 
             if   chose == '1':
                 os.system('clear')
-                print_purple1('Menu > Encrypt > Import File')
-                print_purple1('---------------------------------------------------------------------')
+                print_colorful('Menu > Encrypt > Import File', 'blue')
+                print_colorful('---------------------------------------------------------------------', 'purple')
                 filename = input('Import File name, or leave it empty to Cancel.\n>> ')
                 if filename == '':
                     break
@@ -263,8 +262,8 @@ while True:
                     break
             elif chose == '2':
                 os.system('clear')
-                print_purple1('Menu > Encrypt > Import Text')
-                print_purple1('---------------------------------------------------------------------')
+                print_colorful('Menu > Encrypt > Import Text', 'blue')
+                print_colorful('---------------------------------------------------------------------', 'purple')
                 text = input('Import Text, or leave it empty to Cancel.\n>> ')
                 if text == '':
                     os.system('clear')
@@ -279,14 +278,14 @@ while True:
     elif chose in ['DECRYPT','decrypt','Decrypt','2'] :
         while True:
             os.system('clear')
-            print_purple1('Menu > Decrypt')
-            print_purple1('---------------------------------------------------------------------')
+            print_colorful('Menu > Decrypt', 'blue')
+            print_colorful('---------------------------------------------------------------------', 'purple')
             print('[1]Import File  [2]Input Text  [3]Cancel')
             chose = input('>> ')
             if chose == '1':
                 os.system('clear')
-                print_purple1('Menu > Decrypt > Import File')
-                print_purple1('---------------------------------------------------------------------')
+                print_colorful('Menu > Decrypt > Import File', 'blue')
+                print_colorful('---------------------------------------------------------------------', 'purple')
                 filename = input('Import File name, or leave it empty to Cancel.\n>> ')
                 if filename == '':
                     break
@@ -295,8 +294,8 @@ while True:
                     break
             elif chose == '2':
                 os.system('clear')
-                print_purple1('Menu > Decrypt > Import Text')
-                print_purple1('---------------------------------------------------------------------')
+                print_colorful('Menu > Decrypt > Import Text', 'blue')
+                print_colorful('---------------------------------------------------------------------', 'purple')
                 text = input('Import Text, or leave it empty to Cancel.\n>> ')
                 if text == '':
                     break
@@ -309,18 +308,18 @@ while True:
                 print('Invalid!')
     elif chose in ['HELP','help','Help','3']:
         os.system('clear')
-        print_purple1('Menu > Help & About')
-        print_purple1('---------------------------------------------------------------------')
+        print_colorful('Menu > Help & About', 'blue')
+        print_colorful('---------------------------------------------------------------------', 'purple')
         print('''Its a simple program to Encrypt & Decrypt Texts & Text Files
 you can use it to encrypt secret messages. also you can encrypt all
 your passwords with this program and then save them where you want.''')
         print('Trust it. powered by SHA256!'),
-        print_red2('created by My own')
+        print_colorful('created by My own', 'red2')
         print('2019.Jun.08')
-        print_red2('>>')
-        print_blue('Github: Github.com/ccxa')
-        print_red2('>>')
-        print_purple1('---------------------------------------------------------------------')
+        print_colorful('>>', 'red2')
+        print_colorful('Github: Github.com/ccxa', 'blue')
+        print_colorful('>>', 'red2')
+        print_colorful('---------------------------------------------------------------------', 'purple')
         note=input('')
     elif chose == '4':
         os.system('clear')
