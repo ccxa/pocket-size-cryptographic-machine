@@ -4,18 +4,19 @@ import os
 import values
 from ui import *
 
-def enc(cargo,kind):
-    #--------------------------------------------------------------------------- [Alphabet]
+
+def enc(cargo, kind):
+    # [Alphabet]
     alphabet = values.enc_alphabet
     n = 0
     while n < 100:
-        alphabet.insert(0,0)
-        n+=1
-    if kind == 'file' :
-        #----------------------------------------------------------------------- [Reading file]
+        alphabet.insert(0, 0)
+        n += 1
+    if kind == 'file':
+        # [Reading file]
         fileState = False
         try:
-            file = open(cargo,"r").read()
+            file = open(cargo, "r").read()
             file = file.split("\n")
             if '' in file:
                 file.remove("")
@@ -111,21 +112,19 @@ def enc(cargo,kind):
         print(encryptedText)
         note = input('press Enter to go menu.')
 
+
 def dec(cargo,kind):
-    #---------------------------------------------------------------------------[Alphabet]
-    alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-                'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-                '`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '=', '{', '}', '[', ']', ';',
-                '\\', ':', '"', '|', ',', '.', '/', '<', '>', '?',"'",' ','0','1','2','3','4','5','6','7','8','9']
+    # [Alphabet]
+    alphabet = values.enc_alphabet
     n = 0
     while n < 100:
-        alphabet.insert(0,0)
-        n+=1
+        alphabet.insert(0, 0)
+        n += 1
     if kind == 'file':
-        #----------------------------------------------------------------------- [read encryptedFile]
+        # [read encryptedFile]
         fileState = False
         try:
-            file = open(cargo,"r").read()
+            file = open(cargo, "r").read()
             file = file.split("\n")
             if "" in file:
                 file.remove("")
@@ -137,7 +136,7 @@ def dec(cargo,kind):
             note = input('File Not Found! hit Enter to go menu.')
             fileState = False
         if fileState == True:
-            #---------------------------------------------------------------------------[Enter Secret key]
+            # [Enter Secret key]
             os.system('clear')
             print_colorful('Menu > Decrypt > Import File > Enter encryption key', 'blue')
             print_colorful('---------------------------------------------------------------------', 'purple')
@@ -305,13 +304,11 @@ while True:
                 break
             else:
                 print('Invalid!')
-    elif chose in ['HELP','help','Help','3']:
+    elif chose in ['HELP', 'help', 'Help', '3']:
         os.system('clear')
         print_colorful('Menu > Help & About', 'blue')
         print_colorful('---------------------------------------------------------------------', 'purple')
-        print('''Its a simple program to Encrypt & Decrypt Texts & Text Files
-you can use it to encrypt secret messages. also you can encrypt all
-your passwords with this program and then save them where you want.''')
+        print(values.about)
         print('Trust it. powered by SHA256!'),
         print_colorful('created by My own', 'red2')
         print('2019.Jun.08')
