@@ -23,7 +23,7 @@ def enc(cargo, kind):
         except IOError:
             os.system('clear')
             print_colorful('Menu > Encrypt > Import File > Error!', 'red')
-            print_colorful('---------------------------------------------------------------------', 'purple')
+            print_colorful('-' * 69, 'purple')
             note = input('File Not Found! hit Enter to go menu.')
 
         if fileState == True:
