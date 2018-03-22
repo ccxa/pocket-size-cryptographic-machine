@@ -1,11 +1,8 @@
-import os
 import sys
 import values
-from ui import *
 import graphy
 
 args = sys.argv
-print(args)
 
 if args[1] in ['-h', '--help']:
     print(values.help_message)
