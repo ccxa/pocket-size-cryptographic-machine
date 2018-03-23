@@ -8,17 +8,24 @@ if args[1] in ['-h', '--help']:
     print(values.help_message)
 
 elif args[1] == "-e":
+
     if args[2] == "-t":
         _text = input("Enter text to encrypt:\n>> ")
-        graphy.enc(_text, 'text')
+        secret = input("Enter a secret to encrypt string:\n>> ")
+        graphy.enc(_text, secret, 'text')
+
     elif args[2] == "-f":
         file_path = args[3]
-        graphy.enc(file_path, "file")
+        secret = input("Enter a secret to encrypt string:\n>> ")
+        graphy.enc(file_path, secret, "file")
 
 elif args[1] == "-d":
+
     if args[2] == "-t":
         _text = input("Enter encrypted text to decrypt:\n>> ")
-        graphy.dec(_text, 'text')
+        secret = input("Enter secret to decrypt the data:\n>> ")
+        graphy.dec(_text, secret, 'text')
+
     elif args[2] == "-f":
         file_path = args[3]
         graphy.dec(file_path, "file")
