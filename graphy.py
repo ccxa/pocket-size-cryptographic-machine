@@ -27,6 +27,7 @@ def enc(data, secret, data_type):
     numeric_data = encoder(data)
     numeric_secret = encoder(secret_hash)
     output = (numeric_data * numeric_secret) * 1024
+    print(output)
 
 
 def dec(data, secret, data_type):
