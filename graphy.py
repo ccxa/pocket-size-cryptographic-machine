@@ -2,7 +2,7 @@ import hashlib
 import base64
 
 
-def encoder(data):
+def numerical_encoder(data):
     # converting data to base64
     encoded_data = data.encode('utf-8')
     encoded_data = base64.b64encode(encoded_data)
@@ -24,8 +24,8 @@ def enc(data, secret, data_type):
         str(secret).encode("utf-8")
     ).hexdigest()
 
-    numeric_data = encoder(data)
-    numeric_secret = encoder(secret_hash[0:6])
+    numeric_data = numerical_encoder(data)
+    numeric_secret = numerical_encoder(secret_hash[0:6])
     output = (numeric_data * numeric_secret) * 102
     print(output)
 
@@ -38,7 +38,7 @@ def dec(data, secret, data_type):
     secret_hash = hashlib.sha256(
         str(secret).encode("utf-8")
     ).hexdigest()
-    numeric_secret = encoder(secret_hash[0:6])
+    numeric_secret = numerical_encoder(secret_hash[0:6])
 
     data = str(
         int(
