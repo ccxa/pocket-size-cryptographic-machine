@@ -7,9 +7,10 @@ def numerical_encoder(data):
     encoded_data = data.encode('utf-8')
     encoded_data = base64.b64encode(encoded_data)
 
-    # converting encoded data to chr index
+    # converting encoded data to ascii chr index
     numeric_data = ""
     for letter in encoded_data:
+        # Equalize lengths ie: 95, 105 >> 10095, 10105
         numeric_data += str(int(letter) + 10000)
 
     return int(numeric_data)
@@ -26,8 +27,9 @@ def enc(data, secret, data_type):
 
     numeric_data = numerical_encoder(data)
     numeric_secret = numerical_encoder(secret_hash[0:6])
-    output = (numeric_data * numeric_secret) * 102
-    print(output)
+    encrypted_data = (numeric_data * numeric_secret) * 102
+
+    print(encrypted_data)
 
 
 def dec(data, secret, data_type):
