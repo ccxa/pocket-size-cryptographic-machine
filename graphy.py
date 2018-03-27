@@ -25,8 +25,8 @@ def enc(data, secret, data_type):
     ).hexdigest()
 
     numeric_data = encoder(data)
-    numeric_secret = encoder(secret_hash)
-    output = (numeric_data * numeric_secret) * 1024
+    numeric_secret = encoder(secret_hash[0:6])
+    output = (numeric_data * numeric_secret) * 102
     print(output)
 
 
@@ -38,11 +38,11 @@ def dec(data, secret, data_type):
     secret_hash = hashlib.sha256(
         str(secret).encode("utf-8")
     ).hexdigest()
-    numeric_secret = encoder(secret_hash)
+    numeric_secret = encoder(secret_hash[0:6])
 
     data = str(
         int(
-            (int(data) // 1024) // numeric_secret
+            (int(data) // 102) // numeric_secret
         )
     )
 
