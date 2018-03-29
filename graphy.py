@@ -37,24 +37,28 @@ def dec(data, secret, data_type):
     if data_type == "file":
         data = open(data, 'r').read()
 
+    # making secret ready for decryption
     secret_hash = hashlib.sha256(
         str(secret).encode("utf-8")
     ).hexdigest()
     numeric_secret = numerical_encoder(secret_hash[0:6])
 
-    data = str(
+    # main process of decryption
+    numeric_data = str(
         int(
             (int(data) // 102) // numeric_secret
         )
     )
 
-    encoded_data = ""
-    while len(data) > 0:
-        char = chr(int(data[0:5]) - 10000)
-        data = data[5:]
-        encoded_data += char
+    # converting decrypted numeric data to base64 string
+    base64_str = ""
+    while len(numeric_data) > 0:
+        # We divide numeric data into five-digit groups
+        # Subtract 10000 from each batch: just reverse of line 14
+        char = chr(int(numeric_data[0:5]) - 10000)
+        numeric_data = numeric_data[5:]
+        base64_str += char
 
-    output = base64.b64decode(encoded_data)
-    output = output.decode('utf-8')
-    print(output)
-
+    readable_str = base64.b64decode(base64_str)
+    readable_str = readable_str.decode('utf-8')
+    print(readable_str)
