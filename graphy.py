@@ -1,6 +1,8 @@
 import hashlib
 import base64
 
+import ui
+
 
 def numerical_encoder(data):
     # converting data to base64
@@ -19,7 +21,10 @@ def numerical_encoder(data):
 def enc(data, secret, data_type):
 
     if data_type == "file":
-        data = open(data, 'r').read()
+        try:
+            data = open(data, 'r').read()
+        except IOError:
+            ui.print_colorful("File not found!", 'red')
 
     secret_hash = hashlib.sha256(
         str(secret).encode("utf-8")
@@ -35,7 +40,10 @@ def enc(data, secret, data_type):
 def dec(data, secret, data_type):
 
     if data_type == "file":
-        data = open(data, 'r').read()
+        try:
+            data = open(data, 'r').read()
+        except IOError:
+            ui.print_colorful("File not found!", "red")
 
     # making secret ready for decryption
     secret_hash = hashlib.sha256(
