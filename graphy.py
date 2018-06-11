@@ -25,11 +25,12 @@ def enc(data, secret, data_type):
             data = open(data, 'r').read()
         except IOError:
             ui.print_colorful("File not found!", 'red')
+            return None
 
     secret_hash = hashlib.sha256(
         str(secret).encode("utf-8")
     ).hexdigest()
-
+    print(data)
     numeric_data = numerical_encoder(data)
     numeric_secret = numerical_encoder(secret_hash[0:6])
     encrypted_data = (numeric_data * numeric_secret) * 102
