@@ -1,5 +1,4 @@
 import sys
-
 import ui
 import values
 import graphy
@@ -31,6 +30,6 @@ elif args[1] == "-d" and args[2] == "-f":
     try:
         file_path = args[3]
         secret = input("Enter a secret to decrypt file:\n>> ")
-        graphy.enc(file_path, secret, "file")
+        graphy.dec(file_path, secret, "file")
     except IndexError:
         ui.print_colorful("Error! Input path: -f <file_path>")
