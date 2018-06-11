@@ -1,4 +1,6 @@
 import sys
+
+import ui
 import values
 import graphy
 
@@ -13,9 +15,12 @@ elif args[1] == "-e" and args[2] == "-t":
     graphy.enc(_text, secret, 'text')
 
 elif args[1] == "-e" and args[2] == "-f":
-    file_path = args[3]
-    secret = input("Enter a secret to encrypt string:\n>> ")
-    graphy.enc(file_path, secret, "file")
+    try:
+        file_path = args[3]
+        secret = input("Enter a secret to encrypt string:\n>> ")
+        graphy.enc(file_path, secret, "file")
+    except IndexError:
+        ui.print_colorful("Error! Input path: -f <file_path>")
 
 elif args[1] == "-d" and args[2] == "-t":
     _text = input("Enter encrypted text to decrypt:\n>> ")
@@ -23,5 +28,9 @@ elif args[1] == "-d" and args[2] == "-t":
     graphy.dec(_text, secret, 'text')
 
 elif args[1] == "-d" and args[2] == "-f":
-    file_path = args[3]
-    graphy.dec(file_path, "file")
+    try:
+        file_path = args[3]
+        secret = input("Enter a secret to decrypt file:\n>> ")
+        graphy.enc(file_path, secret, "file")
+    except IndexError:
+        ui.print_colorful("Error! Input path: -f <file_path>")
