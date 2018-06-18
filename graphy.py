@@ -45,6 +45,7 @@ def dec(data, secret, data_type):
             data = open(data, 'r').read()
         except IOError:
             ui.print_colorful("File not found!", "red")
+            return None
 
     # making secret ready for decryption
     secret_hash = hashlib.sha256(
