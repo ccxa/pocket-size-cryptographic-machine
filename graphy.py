@@ -1,6 +1,5 @@
 import hashlib
 import base64
-
 import ui
 
 
@@ -35,7 +34,8 @@ def enc(data, secret, data_type):
     numeric_secret = numerical_encoder(secret_hash[0:6])
     encrypted_data = (numeric_data * numeric_secret) * 102
 
-    print(encrypted_data)
+    ui.print_colorful("Encrypted data:", "blue")
+    ui.print_colorful(encrypted_data, "green")
 
 
 def dec(data, secret, data_type):
@@ -71,4 +71,7 @@ def dec(data, secret, data_type):
 
     readable_str = base64.b64decode(base64_str)
     readable_str = readable_str.decode('utf-8')
-    print(readable_str)
+
+    # Printing output
+    ui.print_colorful("Decrypted data:", "blue")
+    ui.print_colorful(readable_str, "green")
