@@ -48,7 +48,7 @@ def enc(cargo, kind):
                 print('Otherwise it considered as Enter button and navigate words to next line.')
                 note = input('')
             else:
-                #----------------------------------------------------------------------- [doc to alphafile]
+                # [doc to alphafile]
                 alphafile = ""
                 for part in file:
                     for letter in part:
