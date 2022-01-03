@@ -5,18 +5,26 @@ import graphy
 
 args = sys.argv
 
-if 3 > len(args) > 1:
+# If there is only one argument other than 'Encode.py' file name
+if len(args) == 2:
+
     if args[1] in ['-h', '--help']:
         print(values.help_message)
+
+    # If mentioned argument was incorrect
     else:
         print(values.invalid_arg)
 
+# If there are more that two argument, extra args will ignored
 elif len(args) > 2:
+
+    # Encrypting text directly
     if args[1] == "-e" and args[2] == "-t":
         _text = input("Enter text to encrypt:\n>> ")
         secret = input("Enter a secret to encrypt string:\n>> ")
         graphy.enc(_text, secret, 'text')
 
+    # Encrypting file by its path
     elif args[1] == "-e" and args[2] == "-f":
         try:
             file_path = args[3]
@@ -25,11 +33,13 @@ elif len(args) > 2:
         except IndexError:
             ui.print_colorful("Error! Input path: -f <file_path>")
 
+    # Decrypting text directly
     elif args[1] == "-d" and args[2] == "-t":
         _text = input("Enter encrypted text to decrypt:\n>> ")
         secret = input("Enter secret to decrypt the data:\n>> ")
         graphy.dec(_text, secret, 'text')
 
+    # Decrypting file by its path
     elif args[1] == "-d" and args[2] == "-f":
         try:
             file_path = args[3]
@@ -38,7 +48,10 @@ elif len(args) > 2:
         except IndexError:
             ui.print_colorful("Error! Input path: -f <file_path>")
 
+    # If thos arguments where incorrect
     else:
         print(values.invalid_arg)
+
+# If there is no argument other than 'Encoder.py'
 else:
     print(values.invalid_arg)
