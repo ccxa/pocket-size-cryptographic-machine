@@ -5,31 +5,40 @@ import graphy
 
 args = sys.argv
 
-if args[1] in ['-h', '--help']:
-    print(values.help_message)
+if 3 > len(args) > 1:
+    if args[1] in ['-h', '--help']:
+        print(values.help_message)
+    else:
+        print(values.invalid_arg)
 
-elif args[1] == "-e" and args[2] == "-t":
-    _text = input("Enter text to encrypt:\n>> ")
-    secret = input("Enter a secret to encrypt string:\n>> ")
-    graphy.enc(_text, secret, 'text')
-
-elif args[1] == "-e" and args[2] == "-f":
-    try:
-        file_path = args[3]
+elif len(args) > 2:
+    if args[1] == "-e" and args[2] == "-t":
+        _text = input("Enter text to encrypt:\n>> ")
         secret = input("Enter a secret to encrypt string:\n>> ")
-        graphy.enc(file_path, secret, "file")
-    except IndexError:
-        ui.print_colorful("Error! Input path: -f <file_path>")
+        graphy.enc(_text, secret, 'text')
 
-elif args[1] == "-d" and args[2] == "-t":
-    _text = input("Enter encrypted text to decrypt:\n>> ")
-    secret = input("Enter secret to decrypt the data:\n>> ")
-    graphy.dec(_text, secret, 'text')
+    elif args[1] == "-e" and args[2] == "-f":
+        try:
+            file_path = args[3]
+            secret = input("Enter a secret to encrypt string:\n>> ")
+            graphy.enc(file_path, secret, "file")
+        except IndexError:
+            ui.print_colorful("Error! Input path: -f <file_path>")
 
-elif args[1] == "-d" and args[2] == "-f":
-    try:
-        file_path = args[3]
-        secret = input("Enter a secret to decrypt file:\n>> ")
-        graphy.dec(file_path, secret, "file")
-    except IndexError:
-        ui.print_colorful("Error! Input path: -f <file_path>")
+    elif args[1] == "-d" and args[2] == "-t":
+        _text = input("Enter encrypted text to decrypt:\n>> ")
+        secret = input("Enter secret to decrypt the data:\n>> ")
+        graphy.dec(_text, secret, 'text')
+
+    elif args[1] == "-d" and args[2] == "-f":
+        try:
+            file_path = args[3]
+            secret = input("Enter a secret to decrypt file:\n>> ")
+            graphy.dec(file_path, secret, "file")
+        except IndexError:
+            ui.print_colorful("Error! Input path: -f <file_path>")
+
+    else:
+        print(values.invalid_arg)
+else:
+    print(values.invalid_arg)
