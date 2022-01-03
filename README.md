@@ -11,8 +11,8 @@ A simple python3 terminal app to encrypt and decrypt texts and text files! #2018
 
 ### Introduction
 
-This is a simple cryptographic app powered by sha256 and python3 
-you can personalize its algorythms and encryption level easily!
+This is a simple cryptographic app powered by sha256 and python3
+you can personalize its algorithms and encryption level easily!
 
 
 ### Installation
