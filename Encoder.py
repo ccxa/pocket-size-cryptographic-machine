@@ -15,7 +15,7 @@ if len(args) == 2:
     else:
         print(values.invalid_arg)
 
-# If there are more that two argument, extra args will ignored
+# If there are more than two argument, extra args will be ignored
 elif len(args) > 2:
 
     # Encrypting text directly
@@ -48,7 +48,7 @@ elif len(args) > 2:
         except IndexError:
             ui.print_colorful("Error! Input path: -f <file_path>")
 
-    # If thos arguments where incorrect
+    # If those arguments where incorrect
     else:
         print(values.invalid_arg)
 
