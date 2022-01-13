@@ -31,7 +31,7 @@ elif len(args) > 2:
             secret = input("Enter a secret to encrypt string:\n>> ")
             graphy.enc(file_path, secret, "file")
         except IndexError:
-            ui.print_colorful("Error! Input path: -f <file_path>")
+            ui.print_colorful("Error! Input path: -f <file_path>", 'red')
 
     # Decrypting text directly
     elif args[1] == "-d" and args[2] == "-t":
@@ -46,7 +46,7 @@ elif len(args) > 2:
             secret = input("Enter a secret to decrypt file:\n>> ")
             graphy.dec(file_path, secret, "file")
         except IndexError:
-            ui.print_colorful("Error! Input path: -f <file_path>")
+            ui.print_colorful("Error! Input path: -f <file_path>", 'red')
 
     # If those arguments where incorrect
     else:
